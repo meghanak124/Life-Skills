@@ -8,9 +8,9 @@ The current project is experiencing performance and scalability issues with user
 
 Based on initial observations, the system shows the following issues:  [[ref]](https://www.google.com/search?smstk=ChhuakJOTlY2QjVCUjRMQUlTSEcwc2FJVT0QBA%3D%3D&smstidx=0&q=common+soa+problems&udm=50&csuir=1&aep=34&kgs=e528481ed88d7b5c&shndl=37&shmd=H4sIAAAAAAAA_3WNMQ7CMAxF6dqVjakzEjVdGBB3idwkciLVdhSnKjfjDpyKMiPWp_f-719df_TKrDKY4lCqzktkOz1Sa8XuANu2jWQNW_bjLoJFrD5ddpEVMLOzhDW6llaeBfMyFqHz4d25fwOZkaLBXFFCFgJSpSWSo4ohR2kwPX-Y23sJWIObbtdQvh8fWzJTwLoAAAA&shmds=v1_ATWGeeOF7X6Ac4JDzWN3C166DI6jKZIQl787_fUu4GJrb8Kayw&source=sh%2Fx%2Faio%2Fm1%2F1&mtid=2_mFafpJnZWx4w-sho7oAQ)
 
-* Performance bottlenecks from high message volume
-* Tight Coupling & Poor Partitioning
-* Performance degradation under high load
+* The existing system appears to follow a tightly coupled architecture where
+* Multiple responsibilities are handled within a single deployment unit.
+* As user traffic increases, this leads to these issues.
 * Limited fault isolation (failure in one module affects the whole system)
 
 These characteristics are typical of poorly modularized architectures.
@@ -51,18 +51,21 @@ SOA can help mitigate performance problems in the following ways:
 * Reduces processing time for complex workflows
 
 ## 5. How SOA Can Address Scalability Issues
-- divide functionality into distinct units (services), which are accessed independently across different networks and applications. This architecture emphasizes interoperability and reusability, making it an ideal choice for large organizations with complex IT systems.
+- Divides functionality into distinct units (services), which are accessed independently across different networks and applications. This architecture emphasizes interoperability and reusability, making it an ideal choice for large organizations with complex IT systems.
 
-![img.png](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*LyQIdt1UGL4YWvpmWIbbEA.png)
+- Below image illustrates a Service-Oriented Architecture (SOA) where clients dynamically discover and invoke independent services through a service directory and registry. Each service operates independently and communicates through well-defined interfaces, enabling loose coupling, service reuse, and independent scaling. This architecture helps mitigate performance bottlenecks and scalability limitations commonly found in monolithic systems.
+
+     ![[Service-Oriented Architecture Overview]](https://github.com/user-attachments/assets/02836947-cb5e-483a-8668-bc4c6baf534f)
+
 
 
 ## 6. Challenges and Risks of SOA 
 
-While SOA offers several benefits, it also introduces new challenges:  [[ref]](https://wtit.com/wp-content/uploads/2015/07/f5-white-paper-soa-challenges-and-solutions-.pdf)
+While SOA offers several benefits, it also introduces new challenges: [[ref]](https://wtit.com/wp-content/uploads/2015/07/f5-white-paper-soa-challenges-and-solutions-.pdf)
 
 * ### **Exponential increase in connections**: 
 * Overhead of TCP connection 
-* management adds to burden on servers 
+* Management adds to burden on servers 
 Additional hops add additional latency
 
 * ### **XML message size**: 
